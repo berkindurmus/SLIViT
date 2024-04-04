@@ -27,9 +27,7 @@ class KDataset(Dataset):
         self.samples = get_samples(self.metadata, self.annotations, pathologies)
         self.t = default_transform
    
-        self.data_reader = dict(
-            jpeg=load_2dim
-        )[data_format]
+        self.data_reader = load_2dim
 
         self.label_reader = get_labels
         self.labels=[self.label_reader(self.samples[i], self.annotations, self.pathologies)[0][0] for i in range(len(self.samples))]
